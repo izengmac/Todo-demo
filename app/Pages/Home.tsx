@@ -103,12 +103,15 @@ function Home() {
         </div>
         <Note_Modal />
       </div>
-      <Image
+      {/* If there is no note then render the svg
+         <Image
         src={SVG}
         width={500}
         height={500}
         alt="Picture of the author"
       />
+      */}
+   
     </div>
   );
 }
