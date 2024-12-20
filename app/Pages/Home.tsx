@@ -1,4 +1,3 @@
-import { Input } from "postcss";
 import React from "react";
 import SearchSharpIcon from "@mui/icons-material/SearchSharp";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
@@ -7,6 +6,8 @@ import AddCircleIcon from "@mui/icons-material/AddCircle";
 import Checkbox from "@mui/material/Checkbox";
 import CreateOutlinedIcon from "@mui/icons-material/CreateOutlined";
 import DeleteOutlineOutlinedIcon from "@mui/icons-material/DeleteOutlineOutlined";
+import Note_Modal from "../components/Note_Modal"
+
 
 const label = { inputProps: { "aria-label": "Checkbox demo" } };
 
@@ -15,9 +16,9 @@ function Home() {
     <div className="flex flex-col w-full justify-center items-center">
       {/*Head*/}
       <div className="flex flex-col w-full pt-[40px] items-center gap-[16px]">
-        <h1 className="font-kanit text-[26px] font-medium ">TODO LIST</h1>
-        {/* header*/}
-        <div className="flex flex-start w-full  gap-[18px]">
+        <h1 className="font-kanit text-[26px] font-medium">TODO LIST</h1>
+        {/* Header */}
+        <div className="flex flex-start w-full gap-[18px]">
           <div className="flex flex-row justify-between w-[80%] rounded-[5px] border-blue-300 border-2 px-[16px] py-[8px]">
             <input
               placeholder="Search note..."
@@ -40,13 +41,19 @@ function Home() {
       {/*Body*/}
       <div className="flex flex-row w-full">
         {/*List*/}
-        <div className="w-[88%] ml-24 mt-[30px] flex flex-col gap-[17px]">
+        <div className="w-[88%] ml-24 mt-[30px] flex flex-col gap-[17px] divide-y-[2px] divide-blue-300">
           {/*Note*/}
-          <div className="flex flex-row justify-between items-center py-[17px] border-b-2 border-blue-300">
+          <div className="flex flex-row justify-between items-center py-[17px]">
             <div className="flex flex-row items-center justify-center gap-[10px]">
               <Checkbox
                 {...label}
-                sx={{ "& .MuiSvgIcon-root": { fontSize: 28 } }}
+                sx={{
+                  padding: 0, // Removes default padding
+                  "& .MuiSvgIcon-root": {
+                    fontSize: 28, // Ensures consistent size
+                    margin: 0, // Removes margin from the SVG
+                  },
+                }}
               />
               <p className="font-kanit text-[20px] font-medium text-center">
                 Note #1
@@ -60,51 +67,40 @@ function Home() {
               />
             </div>
           </div>
-          {/*Note2*/}
-          <div className="flex flex-row justify-between items-center py-[17px] border-b-2 border-blue-300">
-            <div className="flex flex-row items-center justify-center gap-[10px]">
-              <Checkbox
-                {...label}
-                defaultChecked
-                sx={{ "& .MuiSvgIcon-root": { fontSize: 28 } }}
-              />
-              <p className="font-kanit text-[20px] font-medium text-center">
-                Note #2
-              </p>
+          {/* Additional Notes */}
+          {[2, 3].map((num) => (
+            <div
+              className="flex flex-row justify-between items-center py-[17px]"
+              key={num}
+            >
+              <div className="flex flex-row items-center justify-center gap-[10px]">
+                <Checkbox
+                  {...label}
+                  sx={{
+                    padding: 0,
+                    "& .MuiSvgIcon-root": {
+                      fontSize: 28,
+                      margin: 0,
+                      padding: 0,
+                    },
+                  }}
+                  defaultChecked={num === 2}
+                />
+                <p className="font-kanit text-[20px] font-medium text-center">
+                  Note #{num}
+                </p>
+              </div>
+              <div className="flex flex-row gap-[10px]">
+                <CreateOutlinedIcon color="inherit" sx={{ fontSize: 20 }} />
+                <DeleteOutlineOutlinedIcon
+                  color="inherit"
+                  sx={{ fontSize: 20 }}
+                />
+              </div>
             </div>
-            <div className="flex flex-row gap-[10px]">
-              <CreateOutlinedIcon color="inherit" sx={{ fontSize: 20 }} />
-              <DeleteOutlineOutlinedIcon
-                color="inherit"
-                sx={{ fontSize: 20 }}
-              />
-            </div>
-          </div>
-          {/*Note3*/}
-          <div className="flex flex-row justify-between items-center py-[17px]">
-            <div className="flex flex-row items-center justify-center gap-[10px]">
-              <Checkbox
-                {...label}
-                sx={{ "& .MuiSvgIcon-root": { fontSize: 28 } }}
-              />
-              <p className="font-kanit text-[20px] font-medium text-center">
-                Note #3
-              </p>
-            </div>
-            <div className="flex flex-row gap-[10px]">
-              <CreateOutlinedIcon color="inherit" sx={{ fontSize: 20 }} />
-              <DeleteOutlineOutlinedIcon
-                color="inherit"
-                sx={{ fontSize: 20 }}
-              />
-            </div>
-          </div>
+          ))}
         </div>
-        <AddCircleIcon
-          sx={{ fontSize: 50 }}
-          color="primary"
-          className="ml-12 mt-[450px]"
-        />
+        <Note_Modal/>
       </div>
     </div>
   );
