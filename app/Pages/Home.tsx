@@ -6,8 +6,9 @@ import AddCircleIcon from "@mui/icons-material/AddCircle";
 import Checkbox from "@mui/material/Checkbox";
 import CreateOutlinedIcon from "@mui/icons-material/CreateOutlined";
 import DeleteOutlineOutlinedIcon from "@mui/icons-material/DeleteOutlineOutlined";
-import Note_Modal from "../components/Note_Modal"
-
+import Note_Modal from "../components/Note_Modal";
+import Image from "next/image";
+import SVG from '../assets/empty.svg'
 
 const label = { inputProps: { "aria-label": "Checkbox demo" } };
 
@@ -100,8 +101,14 @@ function Home() {
             </div>
           ))}
         </div>
-        <Note_Modal/>
+        <Note_Modal />
       </div>
+      <Image
+        src={SVG}
+        width={500}
+        height={500}
+        alt="Picture of the author"
+      />
     </div>
   );
 }

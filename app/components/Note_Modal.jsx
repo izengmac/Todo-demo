@@ -36,6 +36,9 @@ export default function BasicModal() {
       <Modal
         open={open}
         onClose={handleClose}
+        disablePortal
+        disableEnforceFocus
+        disableAutoFocus
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
         
