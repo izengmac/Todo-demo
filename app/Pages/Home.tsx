@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import SearchSharpIcon from "@mui/icons-material/SearchSharp";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import DarkModeOutlinedIcon from "@mui/icons-material/DarkModeOutlined";
@@ -18,23 +18,17 @@ const label = { inputProps: { "aria-label": "Checkbox demo" } };
 
 function Home() {
   const [colorTheme, setTheme] = useDarkMode();
+  const [notes, setNotes] = useState([]);
+  console.log(notes)
 
-
-  console.log(useDarkMode());
-
-  // Notes Array
-  const [notes, setNotes] = useState([
-    //     {
-    //       /*
-    //  { id: 1, text: "Note #1", completed: false },
-    //     { id: 2, text: "Note #2", completed: true },
-    //     { id: 3, text: "Note #3", completed: false },
-    // */
-    //     },
-  ]);
-
- 
-
+  useEffect(() => {
+    const storedNotes = localStorage.getItem("notes")
+    console.log(storedNotes)
+    if(storedNotes) {
+      setNotes(JSON.parse(storedNotes))
+      
+    }
+  }, [])
   // Handle Delete Note
   const deleteNote = (id) => {
     setNotes(notes.filter((note) => note.id !== id));
