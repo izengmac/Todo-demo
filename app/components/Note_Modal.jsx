@@ -6,7 +6,6 @@ import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import { useState } from 'react';
 import AddCircleIcon from "@mui/icons-material/AddCircle";
-import { Input } from 'postcss';
 
 const style = {
   position: 'absolute',
@@ -24,6 +23,19 @@ export default function BasicModal() {
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+  const [note, setNote] = useState("")
+  console.log(note)
+
+
+  //Add Note to local storage
+  const AddNote = (e) => {
+    setNote(e.target.value);
+    var names = [];
+    names[0] = note
+    localStorage.setItem("names", JSON.stringify(names));
+
+  }
+  
 
   return (
     <div>
@@ -50,10 +62,12 @@ export default function BasicModal() {
           <input
               placeholder="Input your note..."
               className="focus:outline-none w-[85%] p-y[8px] px-[16px] border-blue-600 border-2 h-[38px] rounded-[5px] mt-[25px]"
+              value={note}
+              onChange={(e) => AddNote(e)}
             />
          <div className='mt-[100px] flex flex-row justify-between gap-[220px]'>
           <div className='border-blue-600 uppercase px-[20px] py-[8px] rounded-[5px] border-2 font-500 font-kanit text-[18px] text-blue-600'>cancel</div>
-          <div className='border-blue-600 uppercase px-[20px] py-[8px] rounded-[5px] border-2 font-500 font-kanit text-[18px] bg-blue-600 text-white'>apply</div>
+          <div className='border-blue-600 uppercase px-[20px] py-[8px] rounded-[5px] border-2 font-500 font-kanit text-[18px] bg-blue-600 text-white' onClick={AddNote()}>apply</div>
          </div>
         </Box>
       </Modal>

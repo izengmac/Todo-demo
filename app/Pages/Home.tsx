@@ -18,19 +18,22 @@ const label = { inputProps: { "aria-label": "Checkbox demo" } };
 
 function Home() {
   const [colorTheme, setTheme] = useDarkMode();
-  console.log(useDarkMode())
 
+
+  console.log(useDarkMode());
 
   // Notes Array
   const [notes, setNotes] = useState([
-//     {
-//       /*
-//  { id: 1, text: "Note #1", completed: false },
-//     { id: 2, text: "Note #2", completed: true },
-//     { id: 3, text: "Note #3", completed: false },
-// */
-//     },
+    //     {
+    //       /*
+    //  { id: 1, text: "Note #1", completed: false },
+    //     { id: 2, text: "Note #2", completed: true },
+    //     { id: 3, text: "Note #3", completed: false },
+    // */
+    //     },
   ]);
+
+ 
 
   // Handle Delete Note
   const deleteNote = (id) => {
