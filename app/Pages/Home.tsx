@@ -14,13 +14,12 @@ import SVG from "../assets/empty.svg";
 import LightModeIcon from "@mui/icons-material/LightMode";
 import useDarkMode from "../hook/useDarkMode";
 
-
 const label = { inputProps: { "aria-label": "Checkbox demo" } };
 
 function Home() {
-const [colorTheme, setTheme] = useDarkMode();
+  const [colorTheme, setTheme] = useDarkMode();
+  console.log(useDarkMode())
 
-console.log(colorTheme);
 
   // Notes Array
   const [notes, setNotes] = useState([
@@ -37,8 +36,6 @@ console.log(colorTheme);
   const deleteNote = (id) => {
     setNotes(notes.filter((note) => note.id !== id));
   };
-
-
 
   return (
     <div className="flex flex-col h-full w-full justify-center items-center">
@@ -60,12 +57,15 @@ console.log(colorTheme);
             </h1>
             <KeyboardArrowDownIcon fontSize="small" />
           </div>
-          <div className="bg-blue-500 w-[5%] rounded-[5px] flex justify-center items-center text-white " onClick={}>
-        {
-          colorTheme == 'light' ?  <LightModeIcon sx={{ fontSize: 32 }} /> : <DarkModeOutlinedIcon sx={{ fontSize: 32 }} /> 
-        }
-        
-        
+          <div
+            className="bg-blue-500 w-[5%] rounded-[5px] flex justify-center items-center text-white "
+            onClick={() => setTheme(colorTheme)}
+          >
+            {colorTheme == "light" ? (
+              <LightModeIcon sx={{ fontSize: 32 }} />
+            ) : (
+              <DarkModeOutlinedIcon sx={{ fontSize: 32 }} />
+            )}
           </div>
         </div>
       </div>
