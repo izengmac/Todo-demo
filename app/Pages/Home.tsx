@@ -23,13 +23,13 @@ function Home() {
 
   // Notes Array
   const [notes, setNotes] = useState([
-    {
-      /*
- { id: 1, text: "Note #1", completed: false },
-    { id: 2, text: "Note #2", completed: true },
-    { id: 3, text: "Note #3", completed: false },
-*/
-    },
+//     {
+//       /*
+//  { id: 1, text: "Note #1", completed: false },
+//     { id: 2, text: "Note #2", completed: true },
+//     { id: 3, text: "Note #3", completed: false },
+// */
+//     },
   ]);
 
   // Handle Delete Note
