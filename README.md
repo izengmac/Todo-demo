@@ -42,3 +42,5 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/bui
 
 Next Task: Store in the local storage✅
 Next Task: Add a note [use local storage]✅
+Next Task: Edit Note❌
+Next Task: Mobile first❌

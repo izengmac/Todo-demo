@@ -30,31 +30,33 @@ function Home() {
   }, []);
   // Handle Delete Note
   const deleteNote = (id) => {
+    
     setNotes(notes.filter((note) => note.id !== id));
+    localStorage.setItem("notes", JSON.stringify(notes));
   };
 
   return (
-    <div className="flex flex-col h-full w-full justify-center items-center dark:text-white ">
+    <div className="flex flex-col h-full w-full justify-center items-center dark:text-white px-[15px]">
       {/*Head*/}
       <div className="flex flex-col w-full pt-[40px] items-center gap-[16px]">
         <h1 className="font-kanit text-[26px] font-medium">TODO LIST</h1>
         {/* Header */}
-        <div className="flex flex-start w-full gap-[18px]">
+        <div className="flex flex-start w-full sm:gap-[16px] lg:gap-[18px]">
           <div className="flex flex-row justify-between w-[80%] rounded-[5px] border-blue-300 border-2 px-[16px] py-[8px]">
             <input
               placeholder="Search note..."
-              className="focus:outline-none w-[75%] dark:bg-black dark:text-white"
+              className="focus:outline-none sm:w-[40%] lg:w-[75%] dark:bg-black dark:text-white"
             />
             <SearchSharpIcon color="primary" sx={{ fontSize: 22 }} />
           </div>
-          <div className="bg-blue-500 w-[11%] flex flex-row justify-center items-center gap-[10px] rounded-[5px] text-white">
+          <div className="bg-blue-500 sm:w-[25%] lg:w-[11%] flex flex-row justify-center items-center gap-[10px] rounded-[5px] text-white">
             <h1 className="font-kanit text-[18px] font-medium uppercase">
               ALL
             </h1>
             <KeyboardArrowDownIcon fontSize="small" />
           </div>
           <div
-            className="bg-blue-500 w-[5%] rounded-[5px] flex justify-center items-center text-white "
+            className="bg-blue-500 sm:w-[20%] md:w-[5%] rounded-[5px] flex justify-center items-center text-white "
             onClick={() => setTheme(colorTheme)}
           >
             {colorTheme == "light" ? (

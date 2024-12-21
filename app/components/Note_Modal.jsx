@@ -89,11 +89,13 @@ export default function BasicModal() {
           <input
             placeholder="Input your note..."
             className="focus:outline-none w-[85%] p-y[8px] px-[16px] border-blue-600 border-[1.5px] h-[38px] rounded-[5px] mt-[25px] dark:bg-black dark:border-white "
-            value={note}
+            
             onChange={handleInputChange}
           />
           <div className="mt-[100px] flex flex-row justify-between gap-[220px]">
-            <div className="border-blue-600 uppercase px-[20px] py-[8px] rounded-[5px] border-2 font-500 font-kanit text-[18px] text-blue-600">
+            <div className="border-blue-600 uppercase px-[20px] py-[8px] rounded-[5px] border-2 font-500 font-kanit text-[18px] text-blue-600"
+            onClick={handleClose}
+            >
               cancel
             </div>
             <div
