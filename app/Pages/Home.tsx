@@ -1,4 +1,6 @@
-import React from "react";
+'use client'
+
+import React, { useState } from "react";
 import SearchSharpIcon from "@mui/icons-material/SearchSharp";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import DarkModeOutlinedIcon from "@mui/icons-material/DarkModeOutlined";
@@ -8,11 +10,21 @@ import CreateOutlinedIcon from "@mui/icons-material/CreateOutlined";
 import DeleteOutlineOutlinedIcon from "@mui/icons-material/DeleteOutlineOutlined";
 import Note_Modal from "../components/Note_Modal";
 import Image from "next/image";
-import SVG from '../assets/empty.svg'
+import SVG from "../assets/empty.svg";
 
 const label = { inputProps: { "aria-label": "Checkbox demo" } };
 
 function Home() {
+  // Notes Array
+  const [notes, setNotes] = useState([
+  
+  ]);
+
+  // Handle Delete Note
+  const deleteNote = (id) => {
+    setNotes(notes.filter((note) => note.id !== id));
+  };
+
   return (
     <div className="flex flex-col w-full justify-center items-center">
       {/*Head*/}
@@ -43,75 +55,53 @@ function Home() {
       <div className="flex flex-row w-full">
         {/*List*/}
         <div className="w-[88%] ml-24 mt-[30px] flex flex-col gap-[17px] divide-y-[2px] divide-blue-300">
-          {/*Note*/}
-          <div className="flex flex-row justify-between items-center py-[17px]">
-            <div className="flex flex-row items-center justify-center gap-[10px]">
-              <Checkbox
-                {...label}
-                sx={{
-                  padding: 0, // Removes default padding
-                  "& .MuiSvgIcon-root": {
-                    fontSize: 28, // Ensures consistent size
-                    margin: 0, // Removes margin from the SVG
-                  },
-                }}
-              />
-              <p className="font-kanit text-[20px] font-medium text-center">
-                Note #1
-              </p>
-            </div>
-            <div className="flex flex-row gap-[10px]">
-              <CreateOutlinedIcon color="inherit" sx={{ fontSize: 20 }} />
-              <DeleteOutlineOutlinedIcon
-                color="inherit"
-                sx={{ fontSize: 20 }}
-              />
-            </div>
-          </div>
-          {/* Additional Notes */}
-          {[2, 3].map((num) => (
-            <div
-              className="flex flex-row justify-between items-center py-[17px]"
-              key={num}
-            >
-              <div className="flex flex-row items-center justify-center gap-[10px]">
-                <Checkbox
-                  {...label}
-                  sx={{
-                    padding: 0,
-                    "& .MuiSvgIcon-root": {
-                      fontSize: 28,
-                      margin: 0,
+          {/* Render Notes Dynamically */}
+          {notes.length > 0 ? (
+            notes.map((note) => (
+              <div
+                className="flex flex-row justify-between items-center py-[17px]"
+                key={note.id}
+              >
+                <div className="flex flex-row items-center justify-center gap-[10px]">
+                  <Checkbox
+                    {...label}
+                    sx={{
                       padding: 0,
-                    },
-                  }}
-                  defaultChecked={num === 2}
-                />
-                <p className="font-kanit text-[20px] font-medium text-center">
-                  Note #{num}
-                </p>
+                      "& .MuiSvgIcon-root": {
+                        fontSize: 28,
+                        margin: 0,
+                        padding: 0,
+                      },
+                    }}
+                    checked={note.completed}
+                  />
+                  <p className="font-kanit text-[20px] font-medium text-center">
+                    {note.text}
+                  </p>
+                </div>
+                <div className="flex flex-row gap-[10px]">
+                  <CreateOutlinedIcon color="inherit" sx={{ fontSize: 20 }} />
+                  <DeleteOutlineOutlinedIcon
+                    color="inherit"
+                    sx={{ fontSize: 20, cursor: "pointer" }}
+                    onClick={() => deleteNote(note.id)}
+                  />
+                </div>
               </div>
-              <div className="flex flex-row gap-[10px]">
-                <CreateOutlinedIcon color="inherit" sx={{ fontSize: 20 }} />
-                <DeleteOutlineOutlinedIcon
-                  color="inherit"
-                  sx={{ fontSize: 20 }}
-                />
-              </div>
+            ))
+          ) : (
+            <div className="flex justify-center items-center">
+              <Image
+                src={SVG}
+                width={500}
+                height={500}
+                alt="No notes available"
+              />
             </div>
-          ))}
+          )}
         </div>
         <Note_Modal />
       </div>
-      {/* If there is no note then render the svg
-         <Image
-        src={SVG}
-        width={500}
-        height={500}
-        alt="Picture of the author"
-      />
-      */}
-   
     </div>
   );
 }
