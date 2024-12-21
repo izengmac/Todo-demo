@@ -41,22 +41,22 @@ function Home() {
       <div className="flex flex-col w-full pt-[40px] items-center gap-[16px]">
         <h1 className="font-kanit text-[26px] font-medium">TODO LIST</h1>
         {/* Header */}
-        <div className="flex flex-start w-full sm:gap-[16px] lg:gap-[18px]">
-          <div className="flex flex-row justify-between w-[80%] rounded-[5px] border-blue-300 border-2 px-[16px] py-[8px]">
+        <div className="flex justify-between w-full sm:gap-10 lg:gap-[18px]">
+          <div className="flex flex-row justify-between  sm:w-[80%] lg:w-[75%] rounded-[5px] border-blue-300 border-2 px-[16px] py-[8px]">
             <input
               placeholder="Search note..."
-              className="focus:outline-none sm:w-[40%] lg:w-[75%] dark:bg-black dark:text-white"
+              className="focus:outline-none sm:w-[30%] lg:w-[75%] dark:bg-black dark:text-white"
             />
             <SearchSharpIcon color="primary" sx={{ fontSize: 22 }} />
           </div>
-          <div className="bg-blue-500 sm:w-[25%] lg:w-[11%] flex flex-row justify-center items-center gap-[10px] rounded-[5px] text-white">
+          <div className="bg-blue-500 sm:w-[25%] lg:w-[11%] flex flex-row justify-center items-center gap-[10px] px-1 rounded-[5px] text-white">
             <h1 className="font-kanit text-[18px] font-medium uppercase">
               ALL
             </h1>
             <KeyboardArrowDownIcon fontSize="small" />
           </div>
           <div
-            className="bg-blue-500 sm:w-[20%] md:w-[5%] rounded-[5px] flex justify-center items-center text-white "
+            className="bg-blue-500 sm:w-[20%] lg:w-[5%] rounded-[5px] flex justify-center items-center text-white "
             onClick={() => setTheme(colorTheme)}
           >
             {colorTheme == "light" ? (
@@ -69,9 +69,9 @@ function Home() {
       </div>
 
       {/*Body*/}
-      <div className="flex flex-row w-full ">
+      <div className="flex justify-center items-center w-full sm:px-8 lg:px-24  ">
         {/*List*/}
-        <div className="w-[88%] ml-24 mt-[30px] flex flex-col gap-[17px] divide-y-[2px] divide-blue-300">
+        <div className="   sm:w-full w-[88%]  mt-[30px] flex flex-col gap-[17px] divide-y-[2px] divide-blue-300">
           {/* Render Notes Dynamically */}
           {notes.length > 0 ? (
             notes.map((note) => (
@@ -122,8 +122,9 @@ function Home() {
             </div>
           )}
         </div>
-        <Note_Modal />
+        
       </div>
+      <Note_Modal />
     </div>
   );
 }

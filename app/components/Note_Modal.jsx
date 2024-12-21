@@ -7,17 +7,7 @@ import Modal from "@mui/material/Modal";
 import { useState } from "react";
 import AddCircleIcon from "@mui/icons-material/AddCircle";
 
-const style = {
-  position: "absolute",
-  top: "50%",
-  left: "50%",
-  transform: "translate(-50%, -50%)",
-  width: 400,
-  bgcolor: "background.paper",
-  border: "2px solid #000",
-  boxShadow: 24,
-  p: 4,
-};
+
 
 export default function BasicModal() {
   const [open, setOpen] = useState(false);
@@ -60,11 +50,11 @@ export default function BasicModal() {
   };
 
   return (
-    <div>
+    <div >
       <AddCircleIcon
         sx={{ fontSize: 50 }}
         color="primary"
-        className="ml-12 mt-[450px]"
+        className=" sm:ml-[400px] lg:ml-[650px] mt-[350px]"
         onClick={handleOpen}
       />
       <Modal
