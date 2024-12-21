@@ -1,17 +1,16 @@
-'use client';
+"use client";
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+
+export default function useDarkMode() {
+  const [theme, setTheme] = useState("dark");
+  const colorTheme = theme == 'dark' ? 'light' : 'dark';
 
 
-export default function useDarkMode(){
-    useEffect (() => {
-        const root = window.document.documentElement;
+  useEffect(() => {
+    const root = window.document.documentElement;
 
-        
-        root.classList.add('dark')
-    })
+    root.classList.add("dark");
+  });
+  return [colorTheme, setTheme];
 }
-
-
-
-

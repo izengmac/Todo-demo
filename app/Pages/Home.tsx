@@ -1,4 +1,4 @@
-'use client'
+"use client";
 
 import React, { useState } from "react";
 import SearchSharpIcon from "@mui/icons-material/SearchSharp";
@@ -11,14 +11,26 @@ import DeleteOutlineOutlinedIcon from "@mui/icons-material/DeleteOutlineOutlined
 import Note_Modal from "../components/Note_Modal";
 import Image from "next/image";
 import SVG from "../assets/empty.svg";
+import LightModeIcon from "@mui/icons-material/LightMode";
+import useDarkMode from "../hook/useDarkMode";
 
 
 const label = { inputProps: { "aria-label": "Checkbox demo" } };
 
 function Home() {
+const [colorTheme, setTheme] = useDarkMode();
+
+console.log(colorTheme);
+
   // Notes Array
   const [notes, setNotes] = useState([
-  
+    {
+      /*
+ { id: 1, text: "Note #1", completed: false },
+    { id: 2, text: "Note #2", completed: true },
+    { id: 3, text: "Note #3", completed: false },
+*/
+    },
   ]);
 
   // Handle Delete Note
@@ -26,7 +38,7 @@ function Home() {
     setNotes(notes.filter((note) => note.id !== id));
   };
 
-  
+
 
   return (
     <div className="flex flex-col h-full w-full justify-center items-center">
@@ -48,8 +60,12 @@ function Home() {
             </h1>
             <KeyboardArrowDownIcon fontSize="small" />
           </div>
-          <div className="bg-blue-500 w-[5%] rounded-[5px] flex justify-center items-center text-white ">
-            <DarkModeOutlinedIcon sx={{ fontSize: 32 }} />
+          <div className="bg-blue-500 w-[5%] rounded-[5px] flex justify-center items-center text-white " onClick={}>
+        {
+          colorTheme == 'light' ?  <LightModeIcon sx={{ fontSize: 32 }} /> : <DarkModeOutlinedIcon sx={{ fontSize: 32 }} /> 
+        }
+        
+        
           </div>
         </div>
       </div>
