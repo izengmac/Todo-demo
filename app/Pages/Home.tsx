@@ -12,6 +12,7 @@ import Note_Modal from "../components/Note_Modal";
 import Image from "next/image";
 import SVG from "../assets/empty.svg";
 
+
 const label = { inputProps: { "aria-label": "Checkbox demo" } };
 
 function Home() {
@@ -25,8 +26,10 @@ function Home() {
     setNotes(notes.filter((note) => note.id !== id));
   };
 
+  
+
   return (
-    <div className="flex flex-col w-full justify-center items-center">
+    <div className="flex flex-col h-full w-full justify-center items-center">
       {/*Head*/}
       <div className="flex flex-col w-full pt-[40px] items-center gap-[16px]">
         <h1 className="font-kanit text-[26px] font-medium">TODO LIST</h1>

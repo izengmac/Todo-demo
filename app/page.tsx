@@ -1,12 +1,16 @@
-import React from "react";
+'use client'
+
 import Home from "./Pages/Home";
+import useDarkMode from "./hook/useDarkMode";
 
 function page() {
+  useDarkMode()
   return (
-    <div className="flex py-0 mx-[325px] justify-center items-center">
-      <div className="w-full justify-center items-center text-center">
+    <div className="flex h-screen px-[325px] dark:bg-black">
+      
         <Home />
-      </div>
+
+      
     </div>
   );
 }
