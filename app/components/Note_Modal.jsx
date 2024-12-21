@@ -75,8 +75,9 @@ export default function BasicModal() {
         disableAutoFocus
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
+       
       >
-        <Box className="absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] w-[500px] h-[289px] bg-[#F7F7F7] border-2 border-solid rounded-[16px] border-white flex flex-col items-center py-[16px]">
+        <Box className="absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] w-[500px] h-[289px] bg-[#F7F7F7] dark:bg-black border-2 border-solid rounded-[16px] border-white flex flex-col items-center py-[16px]">
           <Typography
             id="modal-modal-title"
             variant="h6"
@@ -87,7 +88,7 @@ export default function BasicModal() {
           </Typography>
           <input
             placeholder="Input your note..."
-            className="focus:outline-none w-[85%] p-y[8px] px-[16px] border-blue-600 border-2 h-[38px] rounded-[5px] mt-[25px]"
+            className="focus:outline-none w-[85%] p-y[8px] px-[16px] border-blue-600 border-[1.5px] h-[38px] rounded-[5px] mt-[25px] dark:bg-black dark:border-white "
             value={note}
             onChange={handleInputChange}
           />

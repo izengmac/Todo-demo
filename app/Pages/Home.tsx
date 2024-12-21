@@ -19,23 +19,22 @@ const label = { inputProps: { "aria-label": "Checkbox demo" } };
 function Home() {
   const [colorTheme, setTheme] = useDarkMode();
   const [notes, setNotes] = useState([]);
-  console.log(notes)
+  console.log(notes);
 
   useEffect(() => {
-    const storedNotes = localStorage.getItem("notes")
-    console.log(storedNotes)
-    if(storedNotes) {
-      setNotes(JSON.parse(storedNotes))
-      
+    const storedNotes = localStorage.getItem("notes");
+    console.log(storedNotes);
+    if (storedNotes) {
+      setNotes(JSON.parse(storedNotes));
     }
-  }, [])
+  }, []);
   // Handle Delete Note
   const deleteNote = (id) => {
     setNotes(notes.filter((note) => note.id !== id));
   };
 
   return (
-    <div className="flex flex-col h-full w-full justify-center items-center">
+    <div className="flex flex-col h-full w-full justify-center items-center dark:text-white ">
       {/*Head*/}
       <div className="flex flex-col w-full pt-[40px] items-center gap-[16px]">
         <h1 className="font-kanit text-[26px] font-medium">TODO LIST</h1>
@@ -44,7 +43,7 @@ function Home() {
           <div className="flex flex-row justify-between w-[80%] rounded-[5px] border-blue-300 border-2 px-[16px] py-[8px]">
             <input
               placeholder="Search note..."
-              className="focus:outline-none w-[75%]"
+              className="focus:outline-none w-[75%] dark:bg-black dark:text-white"
             />
             <SearchSharpIcon color="primary" sx={{ fontSize: 22 }} />
           </div>
@@ -68,18 +67,19 @@ function Home() {
       </div>
 
       {/*Body*/}
-      <div className="flex flex-row w-full">
+      <div className="flex flex-row w-full ">
         {/*List*/}
         <div className="w-[88%] ml-24 mt-[30px] flex flex-col gap-[17px] divide-y-[2px] divide-blue-300">
           {/* Render Notes Dynamically */}
           {notes.length > 0 ? (
             notes.map((note) => (
               <div
-                className="flex flex-row justify-between items-center py-[17px]"
+                className="flex flex-row justify-between items-center py-[17px] "
                 key={note.id}
               >
                 <div className="flex flex-row items-center justify-center gap-[10px]">
                   <Checkbox
+                    
                     {...label}
                     sx={{
                       padding: 0,
@@ -88,6 +88,10 @@ function Home() {
                         margin: 0,
                         padding: 0,
                       },
+                      color: "#3C82F6",
+                      '&.Mui-disabled': {
+                      color: "primary",
+                       },
                     }}
                     checked={note.completed}
                   />
